@@ -12,6 +12,9 @@ function Login() {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const navigate = useNavigate();
 
+  // ✅ FIXED: Use environment variable for API URL
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+
   useEffect(() => {
     setIsUsernameValid(user_name.length >= 3);
   }, [user_name]);
@@ -26,8 +29,9 @@ function Login() {
     setMessage('');
 
     try {
-      const res = await axios.post('http://localhost:5001/api/login', {
-        user_name,
+      // ✅ FIXED: Use API_URL variable and correct field names
+      const res = await axios.post(`${API_URL}/api/login`, {
+        username: user_name,  // ✅ Backend expects 'username', not 'user_name'
         password
       });
 
@@ -39,13 +43,13 @@ function Login() {
         // ✅ Store correct key
         sessionStorage.setItem('user', JSON.stringify(userData));
 
-        setMessage(res.data.welcomeMessage || 'Login successful!');
+        setMessage(res.data.message || 'Login successful!');
 
         setTimeout(() => {
-          if (userData.user_type === 'admin') {
+          if (userData.type === 'admin') {  // ✅ Backend returns 'type', not 'user_type'
             navigate('/admin-dashboard');
           } else {
-            navigate('/user-dashboard/'); // ✅ Corrected redirect path
+            navigate('/user-dashboard/');
           }
         }, 1000);
       } else {
@@ -135,6 +139,13 @@ function Login() {
           </svg>
         </div>
       </div>
+
+      {/* ✅ Debug info - remove in production */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{ position: 'fixed', bottom: '10px', left: '10px', background: 'rgba(0,0,0,0.8)', color: 'white', padding: '5px', fontSize: '12px' }}>
+          API URL: {API_URL}
+        </div>
+      )}
     </div>
   );
 }
