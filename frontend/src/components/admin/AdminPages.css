@@ -1,7 +1,9 @@
-/* AdminPages.css - Professional Admin Management Pages */
+/* AdminPages.css - Professional Admin Management Pages - FIXED DIALOG SIZING */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Page Container */
+
 .admin-page-container {
     padding: 2rem;
     min-height: 100vh;
@@ -9,7 +11,9 @@
     position: relative;
 }
 
+
 /* Page Header */
+
 .admin-page-header {
     display: flex;
     justify-content: space-between;
@@ -60,7 +64,9 @@
     z-index: 2;
 }
 
+
 /* Add Button */
+
 .admin-add-btn {
     background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
     border: 1px solid rgba(59, 130, 246, 0.3) !important;
@@ -97,7 +103,9 @@
     left: 100%;
 }
 
+
 /* Data Table Container */
+
 .admin-table-container {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(30px);
@@ -120,7 +128,9 @@
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
+
 /* Table Styles */
+
 .admin-table {
     background: transparent !important;
 }
@@ -159,7 +169,9 @@
     font-weight: 500;
 }
 
+
 /* Action Buttons */
+
 .admin-action-btn {
     width: 2.5rem !important;
     height: 2.5rem !important;
@@ -206,7 +218,9 @@
     box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3) !important;
 }
 
+
 /* Status Chips */
+
 .status-chip {
     border-radius: 20px !important;
     font-weight: 600 !important;
@@ -239,26 +253,76 @@
     border-color: rgba(16, 185, 129, 0.3) !important;
 }
 
-/* Dialog Styles */
-.admin-dialog .MuiDialog-paper {
+
+/* FIXED: Dialog Styles - Medium Size & Centered - UNIVERSAL SELECTORS */
+
+
+/* Target ALL MUI Dialog papers regardless of class name */
+
+.MuiDialog-paper,
+.admin-dialog .MuiDialog-paper,
+[class*="dialog"] .MuiDialog-paper,
+[class*="Dialog"] .MuiDialog-paper {
     background: rgba(10, 11, 30, 0.95) !important;
     backdrop-filter: blur(30px) !important;
     -webkit-backdrop-filter: blur(30px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 20px !important;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+    /* FIXED: Set medium size constraints */
+    max-width: 600px !important;
+    width: 90% !important;
+    max-height: 80vh !important;
+    margin: auto !important;
+    /* FIXED: Ensure proper positioning */
+    position: relative !important;
 }
 
-.admin-dialog .MuiDialogTitle-root {
+
+/* Target ALL MUI Dialog containers */
+
+.MuiDialog-container,
+.admin-dialog .MuiDialog-container,
+[class*="dialog"] .MuiDialog-container,
+[class*="Dialog"] .MuiDialog-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 2rem !important;
+}
+
+
+/* Target ALL MUI Dialog backdrops */
+
+.MuiBackdrop-root,
+.admin-dialog .MuiBackdrop-root,
+[class*="dialog"] .MuiBackdrop-root,
+[class*="Dialog"] .MuiBackdrop-root {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+
+/* Target ALL MUI Dialog titles */
+
+.MuiDialogTitle-root,
+.admin-dialog .MuiDialogTitle-root,
+[class*="dialog"] .MuiDialogTitle-root,
+[class*="Dialog"] .MuiDialogTitle-root {
     color: #ffffff !important;
     font-weight: 700 !important;
     font-size: 1.5rem !important;
     padding: 1.5rem 2rem 1rem !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
+    text-align: center;
 }
 
-.admin-dialog .MuiDialogTitle-root::after {
+.MuiDialogTitle-root::after,
+.admin-dialog .MuiDialogTitle-root::after,
+[class*="dialog"] .MuiDialogTitle-root::after,
+[class*="Dialog"] .MuiDialogTitle-root::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -268,21 +332,72 @@
     background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
 }
 
-.admin-dialog .MuiDialogContent-root {
+
+/* Target ALL MUI Dialog content */
+
+.MuiDialogContent-root,
+.admin-dialog .MuiDialogContent-root,
+[class*="dialog"] .MuiDialogContent-root,
+[class*="Dialog"] .MuiDialogContent-root {
     padding: 2rem !important;
     color: #cbd5e1 !important;
+    /* FIXED: Add scroll if content is too tall */
+    overflow-y: auto !important;
+    max-height: 60vh !important;
 }
 
-.admin-dialog .MuiDialogActions-root {
+
+/* Target ALL MUI Dialog actions */
+
+.MuiDialogActions-root,
+.admin-dialog .MuiDialogActions-root,
+[class*="dialog"] .MuiDialogActions-root,
+[class*="Dialog"] .MuiDialogActions-root {
     padding: 1rem 2rem 1.5rem !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     gap: 1rem;
+    justify-content: center !important;
 }
 
+
+/* ADDITIONAL: Specific selectors for common dialog variations */
+
+.admin-dialog,
+.street-dialog,
+.plot-dialog,
+.resident-dialog,
+.add-dialog,
+.edit-dialog,
+[role="dialog"] {
+    /* Ensure all dialog containers get proper styling */
+}
+
+.admin-dialog .MuiDialog-paper,
+.street-dialog .MuiDialog-paper,
+.plot-dialog .MuiDialog-paper,
+.resident-dialog .MuiDialog-paper,
+.add-dialog .MuiDialog-paper,
+.edit-dialog .MuiDialog-paper {
+    background: rgba(10, 11, 30, 0.95) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+    max-width: 600px !important;
+    width: 90% !important;
+    max-height: 80vh !important;
+    margin: auto !important;
+    position: relative !important;
+}
+
+
 /* Form Fields */
+
 .admin-form-field .MuiTextField-root,
 .admin-form-field .MuiFormControl-root {
     margin: 0.75rem 0 !important;
+    width: 100% !important;
 }
 
 .admin-form-field .MuiOutlinedInput-root {
@@ -331,7 +446,9 @@
     color: #94a3b8 !important;
 }
 
+
 /* Form Sections */
+
 .form-section {
     margin: 2rem 0;
     padding: 1.5rem;
@@ -358,13 +475,16 @@
     border-radius: 2px;
 }
 
+
 /* Dialog Buttons */
+
 .admin-dialog-btn {
     border-radius: 8px !important;
     padding: 0.75rem 1.5rem !important;
     font-weight: 600 !important;
     text-transform: none !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    min-width: 120px !important;
 }
 
 .admin-cancel-btn {
@@ -390,7 +510,9 @@
     box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4) !important;
 }
 
+
 /* Reports Cards */
+
 .report-card {
     background: rgba(255, 255, 255, 0.05) !important;
     backdrop-filter: blur(30px) !important;
@@ -438,7 +560,9 @@
     box-shadow: 0 0 10px #3b82f6;
 }
 
+
 /* Notification Form */
+
 .notification-form {
     max-width: 800px;
     margin: 0 auto;
@@ -461,7 +585,9 @@
     border-radius: 20px 20px 0 0;
 }
 
+
 /* Empty State */
+
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
@@ -486,7 +612,9 @@
     color: #94a3b8 !important;
 }
 
+
 /* Loading States */
+
 .loading-skeleton {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
     background-size: 200% 100%;
@@ -496,7 +624,9 @@
     margin: 0.5rem 0;
 }
 
+
 /* Animations */
+
 @keyframes slideInUp {
     from {
         opacity: 0;
@@ -529,7 +659,9 @@
     }
 }
 
+
 /* Responsive Design */
+
 @media (max-width: 768px) {
     .admin-page-container {
         padding: 1rem;
@@ -556,6 +688,33 @@
     .report-card {
         padding: 1.5rem !important;
     }
+
+    /* FIXED: Mobile dialog sizing */
+    .admin-dialog .MuiDialog-paper {
+        max-width: 95% !important;
+        width: 95% !important;
+        margin: 1rem !important;
+        max-height: 90vh !important;
+    }
+
+    .admin-dialog .MuiDialog-container {
+        padding: 1rem !important;
+    }
+
+    .admin-dialog .MuiDialogContent-root {
+        padding: 1.5rem !important;
+        max-height: 50vh !important;
+    }
+
+    .admin-dialog .MuiDialogActions-root {
+        padding: 1rem 1.5rem !important;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .admin-dialog-btn {
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -572,5 +731,22 @@
         width: 2rem !important;
         height: 2rem !important;
         margin: 0 0.125rem !important;
+    }
+
+    /* FIXED: Small mobile dialog sizing */
+    .admin-dialog .MuiDialog-paper {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0.5rem !important;
+        border-radius: 16px !important;
+    }
+
+    .admin-dialog .MuiDialogTitle-root {
+        padding: 1rem 1.5rem 0.5rem !important;
+        font-size: 1.25rem !important;
+    }
+
+    .admin-dialog .MuiDialogContent-root {
+        padding: 1rem !important;
     }
 }
