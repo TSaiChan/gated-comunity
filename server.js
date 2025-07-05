@@ -25,7 +25,117 @@ app.use(cors({
 
 app.use(express.json());
 
-// Mount routers
+// Login endpoint - ADDED BEFORE ROUTERS TO OVERRIDE
+app.post('/api/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    console.log('Login attempt:', { username, passwordLength: password?.length }); // Debug log
+
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username and password are required'
+      });
+    }
+
+    // Simple authentication (should use bcrypt in production)
+    const result = await query(
+      'SELECT * FROM users_login WHERE user_name = $1 AND password = $2',
+      [username, password]
+    );
+
+    if (result.rows.length > 0) {
+      const user = result.rows[0];
+
+      // Update last login time
+      await query(
+        'UPDATE users_login SET last_login = CURRENT_TIMESTAMP WHERE user_id = $1',
+        [user.user_id]
+      );
+
+      res.json({
+        success: true,
+        message: 'Login successful',
+        user: {
+          id: user.user_id,
+          username: user.user_name,
+          type: user.user_type,
+          orgId: user.org_id,
+          plotId: user.plot_id,
+          residentId: user.resident_id
+        }
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error during login'
+    });
+  }
+});
+
+// Alternative login endpoint for auth router compatibility
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    console.log('Auth login attempt:', { username, passwordLength: password?.length });
+
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username and password are required'
+      });
+    }
+
+    const result = await query(
+      'SELECT * FROM users_login WHERE user_name = $1 AND password = $2',
+      [username, password]
+    );
+
+    if (result.rows.length > 0) {
+      const user = result.rows[0];
+
+      await query(
+        'UPDATE users_login SET last_login = CURRENT_TIMESTAMP WHERE user_id = $1',
+        [user.user_id]
+      );
+
+      res.json({
+        success: true,
+        message: 'Login successful',
+        user: {
+          id: user.user_id,
+          username: user.user_name,
+          type: user.user_type,
+          orgId: user.org_id,
+          plotId: user.plot_id,
+          residentId: user.resident_id
+        }
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+  } catch (error) {
+    console.error('Auth login error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error during login'
+    });
+  }
+});
+
+// Mount routers AFTER custom endpoints
 app.use('/api', authRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/user', userRouter);
