@@ -1,4 +1,4 @@
-/* AdminPages.css - Professional Admin Management Pages - FIXED DIALOG SIZING */
+/* AdminPages.css - Professional Admin Management Pages - ENHANCED TEXT VISIBILITY & NOTIFICATION FORM */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -254,10 +254,7 @@
 }
 
 
-/* FIXED: Dialog Styles - Medium Size & Centered - UNIVERSAL SELECTORS */
-
-
-/* Target ALL MUI Dialog papers regardless of class name */
+/* Dialog Styles - Medium Size & Centered */
 
 .MuiDialog-paper,
 .admin-dialog .MuiDialog-paper,
@@ -269,17 +266,12 @@
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 20px !important;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
-    /* FIXED: Set medium size constraints */
     max-width: 600px !important;
     width: 90% !important;
     max-height: 80vh !important;
     margin: auto !important;
-    /* FIXED: Ensure proper positioning */
     position: relative !important;
 }
-
-
-/* Target ALL MUI Dialog containers */
 
 .MuiDialog-container,
 .admin-dialog .MuiDialog-container,
@@ -291,9 +283,6 @@
     padding: 2rem !important;
 }
 
-
-/* Target ALL MUI Dialog backdrops */
-
 .MuiBackdrop-root,
 .admin-dialog .MuiBackdrop-root,
 [class*="dialog"] .MuiBackdrop-root,
@@ -302,9 +291,6 @@
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
 }
-
-
-/* Target ALL MUI Dialog titles */
 
 .MuiDialogTitle-root,
 .admin-dialog .MuiDialogTitle-root,
@@ -332,22 +318,15 @@
     background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
 }
 
-
-/* Target ALL MUI Dialog content */
-
 .MuiDialogContent-root,
 .admin-dialog .MuiDialogContent-root,
 [class*="dialog"] .MuiDialogContent-root,
 [class*="Dialog"] .MuiDialogContent-root {
     padding: 2rem !important;
     color: #cbd5e1 !important;
-    /* FIXED: Add scroll if content is too tall */
     overflow-y: auto !important;
     max-height: 60vh !important;
 }
-
-
-/* Target ALL MUI Dialog actions */
 
 .MuiDialogActions-root,
 .admin-dialog .MuiDialogActions-root,
@@ -357,38 +336,6 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     gap: 1rem;
     justify-content: center !important;
-}
-
-
-/* ADDITIONAL: Specific selectors for common dialog variations */
-
-.admin-dialog,
-.street-dialog,
-.plot-dialog,
-.resident-dialog,
-.add-dialog,
-.edit-dialog,
-[role="dialog"] {
-    /* Ensure all dialog containers get proper styling */
-}
-
-.admin-dialog .MuiDialog-paper,
-.street-dialog .MuiDialog-paper,
-.plot-dialog .MuiDialog-paper,
-.resident-dialog .MuiDialog-paper,
-.add-dialog .MuiDialog-paper,
-.edit-dialog .MuiDialog-paper {
-    background: rgba(10, 11, 30, 0.95) !important;
-    backdrop-filter: blur(30px) !important;
-    -webkit-backdrop-filter: blur(30px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
-    max-width: 600px !important;
-    width: 90% !important;
-    max-height: 80vh !important;
-    margin: auto !important;
-    position: relative !important;
 }
 
 
@@ -659,8 +606,912 @@
     }
 }
 
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
 
-/* Responsive Design */
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================== ENHANCED LIGHT MODE - MAXIMUM TEXT VISIBILITY =========================== */
+
+
+/* Enhanced Root Variables for Light Mode */
+
+:root {
+    --light-bg-primary: #f8fafc;
+    --light-bg-secondary: #e2e8f0;
+    --light-bg-tertiary: #cbd5e1;
+    --light-surface: #ffffff;
+    --light-surface-elevated: #f1f5f9;
+    --light-text-primary: #000000;
+    --light-text-secondary: #000000;
+    --light-text-tertiary: #000000;
+    --light-border: #cbd5e1;
+    --light-border-strong: #94a3b8;
+    --light-shadow: rgba(15, 23, 42, 0.1);
+    --light-shadow-medium: rgba(15, 23, 42, 0.15);
+    --light-shadow-strong: rgba(15, 23, 42, 0.2);
+}
+
+
+/* =========================== UNIVERSAL TEXT VISIBILITY FIX =========================== */
+
+
+/* MAIN LIGHT THEME CONTAINER */
+
+.admin-layout.light-theme {
+    background: linear-gradient(135deg, var(--light-bg-primary) 0%, var(--light-bg-secondary) 100%) !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* NUCLEAR OPTION - ALL TEXT DARK WITH MAXIMUM SPECIFICITY */
+
+.admin-layout.light-theme *,
+.admin-layout.light-theme *::before,
+.admin-layout.light-theme *::after,
+.admin-layout.light-theme div,
+.admin-layout.light-theme span,
+.admin-layout.light-theme p,
+.admin-layout.light-theme h1,
+.admin-layout.light-theme h2,
+.admin-layout.light-theme h3,
+.admin-layout.light-theme h4,
+.admin-layout.light-theme h5,
+.admin-layout.light-theme h6,
+.admin-layout.light-theme td,
+.admin-layout.light-theme th,
+.admin-layout.light-theme tr,
+.admin-layout.light-theme table,
+.admin-layout.light-theme tbody,
+.admin-layout.light-theme thead,
+.admin-layout.light-theme tfoot,
+.admin-layout.light-theme label,
+.admin-layout.light-theme input,
+.admin-layout.light-theme textarea,
+.admin-layout.light-theme select,
+.admin-layout.light-theme option,
+.admin-layout.light-theme a,
+.admin-layout.light-theme li,
+.admin-layout.light-theme ul,
+.admin-layout.light-theme ol {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    visibility: visible !important;
+}
+
+
+/* =========================== ALL MUI COMPONENTS =========================== */
+
+
+/* ALL MUI Typography */
+
+.admin-layout.light-theme .MuiTypography-root,
+.admin-layout.light-theme .MuiTypography-body1,
+.admin-layout.light-theme .MuiTypography-body2,
+.admin-layout.light-theme .MuiTypography-caption,
+.admin-layout.light-theme .MuiTypography-subtitle1,
+.admin-layout.light-theme .MuiTypography-subtitle2,
+.admin-layout.light-theme .MuiTypography-h1,
+.admin-layout.light-theme .MuiTypography-h2,
+.admin-layout.light-theme .MuiTypography-h3,
+.admin-layout.light-theme .MuiTypography-h4,
+.admin-layout.light-theme .MuiTypography-h5,
+.admin-layout.light-theme .MuiTypography-h6 {
+    color: #000000 !important;
+    font-weight: 800 !important;
+}
+
+
+/* ALL TABLE COMPONENTS - CRITICAL FOR YOUR ISSUE */
+
+.admin-layout.light-theme .MuiTable-root,
+.admin-layout.light-theme .MuiTable-root *,
+.admin-layout.light-theme .MuiTableContainer-root,
+.admin-layout.light-theme .MuiTableContainer-root *,
+.admin-layout.light-theme .MuiTableHead-root,
+.admin-layout.light-theme .MuiTableHead-root *,
+.admin-layout.light-theme .MuiTableBody-root,
+.admin-layout.light-theme .MuiTableBody-root *,
+.admin-layout.light-theme .MuiTableRow-root,
+.admin-layout.light-theme .MuiTableRow-root *,
+.admin-layout.light-theme .MuiTableCell-root,
+.admin-layout.light-theme .MuiTableCell-root *,
+.admin-layout.light-theme .admin-table,
+.admin-layout.light-theme .admin-table *,
+.admin-layout.light-theme .admin-table-container,
+.admin-layout.light-theme .admin-table-container *,
+.admin-layout.light-theme .admin-table-head,
+.admin-layout.light-theme .admin-table-head *,
+.admin-layout.light-theme .admin-table-body,
+.admin-layout.light-theme .admin-table-body * {
+    color: #000000 !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+}
+
+
+/* SPECIFIC TABLE CELL TARGETING */
+
+.admin-layout.light-theme table td,
+.admin-layout.light-theme table td *,
+.admin-layout.light-theme table th,
+.admin-layout.light-theme table th *,
+.admin-layout.light-theme .MuiTableCell-root,
+.admin-layout.light-theme .MuiTableCell-root * {
+    color: #000000 !important;
+    font-weight: 900 !important;
+    font-size: inherit !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+}
+
+
+/* FIRST COLUMN (NAMES) - EXTRA EMPHASIS */
+
+.admin-layout.light-theme table td:first-child,
+.admin-layout.light-theme table td:first-child *,
+.admin-layout.light-theme .MuiTableCell-root:first-child,
+.admin-layout.light-theme .MuiTableCell-root:first-child * {
+    color: #000000 !important;
+    font-weight: 900 !important;
+    font-size: 1em !important;
+}
+
+
+/* SECOND COLUMN (STREET NAMES) - EXTRA EMPHASIS */
+
+.admin-layout.light-theme table td:nth-child(2),
+.admin-layout.light-theme table td:nth-child(2) *,
+.admin-layout.light-theme .MuiTableCell-root:nth-child(2),
+.admin-layout.light-theme .MuiTableCell-root:nth-child(2) * {
+    color: #000000 !important;
+    font-weight: 900 !important;
+    font-size: 1em !important;
+}
+
+
+/* ALL FORM COMPONENTS */
+
+.admin-layout.light-theme .MuiFormControl-root,
+.admin-layout.light-theme .MuiFormControl-root *,
+.admin-layout.light-theme .MuiTextField-root,
+.admin-layout.light-theme .MuiTextField-root *,
+.admin-layout.light-theme .MuiInputBase-root,
+.admin-layout.light-theme .MuiInputBase-root *,
+.admin-layout.light-theme .MuiInputBase-input,
+.admin-layout.light-theme .MuiOutlinedInput-root,
+.admin-layout.light-theme .MuiOutlinedInput-root *,
+.admin-layout.light-theme .MuiOutlinedInput-input,
+.admin-layout.light-theme .MuiInputLabel-root,
+.admin-layout.light-theme .MuiFormLabel-root,
+.admin-layout.light-theme .admin-form-field,
+.admin-layout.light-theme .admin-form-field * {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* ALL PAPER AND CARD COMPONENTS */
+
+.admin-layout.light-theme .MuiPaper-root,
+.admin-layout.light-theme .MuiPaper-root *,
+.admin-layout.light-theme .MuiCard-root,
+.admin-layout.light-theme .MuiCard-root *,
+.admin-layout.light-theme .MuiCardContent-root,
+.admin-layout.light-theme .MuiCardContent-root *,
+.admin-layout.light-theme .report-card,
+.admin-layout.light-theme .report-card * {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* ALL LIST COMPONENTS */
+
+.admin-layout.light-theme .MuiList-root,
+.admin-layout.light-theme .MuiList-root *,
+.admin-layout.light-theme .MuiListItem-root,
+.admin-layout.light-theme .MuiListItem-root *,
+.admin-layout.light-theme .MuiListItemText-root,
+.admin-layout.light-theme .MuiListItemText-root *,
+.admin-layout.light-theme .MuiListItemText-primary,
+.admin-layout.light-theme .MuiListItemText-secondary {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================== COMPONENT BACKGROUNDS =========================== */
+
+
+/* Hide background effects in light mode */
+
+.admin-layout.light-theme .admin-bg-effects {
+    display: none !important;
+}
+
+
+/* Page Header */
+
+.admin-layout.light-theme .admin-page-header {
+    background: var(--light-surface) !important;
+    border: 2px solid var(--light-border) !important;
+    color: #000000 !important;
+    box-shadow: 0 8px 25px var(--light-shadow) !important;
+    backdrop-filter: none !important;
+}
+
+.admin-layout.light-theme .page-title {
+    background: linear-gradient(135deg, #000000 0%, #1e293b 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 900 !important;
+}
+
+.admin-layout.light-theme .page-subtitle {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* Add Button */
+
+.admin-layout.light-theme .admin-add-btn {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    border: 2px solid rgba(5, 150, 105, 0.4) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3) !important;
+    font-weight: 800 !important;
+}
+
+
+/* Table Container */
+
+.admin-layout.light-theme .admin-table-container {
+    background: var(--light-surface) !important;
+    border: 2px solid var(--light-border) !important;
+    color: #000000 !important;
+    box-shadow: 0 8px 25px var(--light-shadow) !important;
+    backdrop-filter: none !important;
+}
+
+
+/* Table Header */
+
+.admin-layout.light-theme .admin-table-head {
+    background: var(--light-bg-secondary) !important;
+}
+
+.admin-layout.light-theme .admin-table-head .MuiTableCell-root {
+    color: #000000 !important;
+    border-bottom: 2px solid var(--light-border-strong) !important;
+    font-weight: 900 !important;
+    background: var(--light-bg-secondary) !important;
+}
+
+
+/* Table Body */
+
+.admin-layout.light-theme .admin-table-body .MuiTableRow-root {
+    border-bottom: 1px solid var(--light-border) !important;
+    background: var(--light-surface) !important;
+}
+
+.admin-layout.light-theme .admin-table-body .MuiTableRow-root:hover {
+    background: var(--light-surface-elevated) !important;
+    box-shadow: 0 4px 15px var(--light-shadow) !important;
+}
+
+.admin-layout.light-theme .admin-table-body .MuiTableCell-root {
+    color: #000000 !important;
+    border-bottom: 1px solid var(--light-border) !important;
+    font-weight: 800 !important;
+}
+
+
+/* =========================== BUTTONS =========================== */
+
+
+/* Action Buttons */
+
+.admin-layout.light-theme .admin-edit-btn {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(37, 99, 235, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3) !important;
+}
+
+.admin-layout.light-theme .admin-delete-btn {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3) !important;
+}
+
+.admin-layout.light-theme .admin-special-btn {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(124, 58, 237, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3) !important;
+}
+
+
+/* =========================== STATUS CHIPS =========================== */
+
+.admin-layout.light-theme .status-chip,
+.admin-layout.light-theme .status-chip *,
+.admin-layout.light-theme .MuiChip-root,
+.admin-layout.light-theme .MuiChip-root *,
+.admin-layout.light-theme .MuiChip-label {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+.admin-layout.light-theme .MuiChip-root {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border: 1px solid rgba(37, 99, 235, 0.5) !important;
+}
+
+
+/* =========================== DIALOGS =========================== */
+
+.admin-layout.light-theme .MuiDialog-paper,
+.admin-layout.light-theme .admin-dialog .MuiDialog-paper,
+.admin-layout.light-theme [class*="dialog"] .MuiDialog-paper,
+.admin-layout.light-theme [class*="Dialog"] .MuiDialog-paper {
+    background: var(--light-surface) !important;
+    color: #000000 !important;
+    border: 2px solid var(--light-border-strong) !important;
+    box-shadow: 0 25px 60px var(--light-shadow-strong) !important;
+    backdrop-filter: none !important;
+}
+
+.admin-layout.light-theme .MuiDialogTitle-root,
+.admin-layout.light-theme .admin-dialog .MuiDialogTitle-root,
+.admin-layout.light-theme [class*="dialog"] .MuiDialogTitle-root,
+.admin-layout.light-theme [class*="Dialog"] .MuiDialogTitle-root {
+    color: #000000 !important;
+    border-bottom: 2px solid var(--light-border-strong) !important;
+    font-weight: 900 !important;
+}
+
+.admin-layout.light-theme .MuiDialogContent-root,
+.admin-layout.light-theme .admin-dialog .MuiDialogContent-root,
+.admin-layout.light-theme [class*="dialog"] .MuiDialogContent-root,
+.admin-layout.light-theme [class*="Dialog"] .MuiDialogContent-root {
+    color: #000000 !important;
+}
+
+
+/* =========================== FORMS =========================== */
+
+.admin-layout.light-theme .admin-form-field .MuiOutlinedInput-root {
+    background: var(--light-surface) !important;
+    color: #000000 !important;
+    border: 2px solid var(--light-border) !important;
+    box-shadow: 0 2px 8px var(--light-shadow) !important;
+}
+
+.admin-layout.light-theme .admin-form-field .MuiInputLabel-root {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+.admin-layout.light-theme .admin-form-field .MuiInputBase-input {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================== NOTIFICATION FORM LIGHT MODE ENHANCEMENT =========================== */
+
+
+/* NOTIFICATION PAGE CONTAINER */
+
+.admin-layout.light-theme .notification-page-container,
+.admin-layout.light-theme .admin-page-container {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    padding: 2rem !important;
+    min-height: 100vh !important;
+}
+
+
+/* NOTIFICATION FORM MAIN CONTAINER */
+
+.admin-layout.light-theme .notification-form,
+.admin-layout.light-theme .create-notification-form,
+.admin-layout.light-theme .notification-card,
+.admin-layout.light-theme .form-container {
+    background: #ffffff !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 20px !important;
+    padding: 2.5rem !important;
+    margin: 0 auto !important;
+    max-width: 900px !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1) !important;
+    backdrop-filter: none !important;
+    position: relative !important;
+}
+
+
+/* Form header styling */
+
+.admin-layout.light-theme .notification-form::before,
+.admin-layout.light-theme .create-notification-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981) !important;
+    border-radius: 20px 20px 0 0;
+}
+
+
+/* FORM SECTION HEADERS */
+
+.admin-layout.light-theme .form-section-header,
+.admin-layout.light-theme .notification-header,
+.admin-layout.light-theme .create-notification-header {
+    color: #000000 !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+.admin-layout.light-theme .form-section-header::before,
+.admin-layout.light-theme .notification-header::before,
+.admin-layout.light-theme .create-notification-header::before {
+    content: '📝' !important;
+    font-size: 1.25rem !important;
+}
+
+
+/* FORM FIELD CONTAINERS */
+
+.admin-layout.light-theme .form-field-container,
+.admin-layout.light-theme .notification-field,
+.admin-layout.light-theme .form-group {
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+}
+
+
+/* FORM LABELS */
+
+.admin-layout.light-theme .form-label,
+.admin-layout.light-theme .field-label,
+.admin-layout.light-theme .MuiFormLabel-root,
+.admin-layout.light-theme .MuiInputLabel-root,
+.admin-layout.light-theme label {
+    color: #000000 !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+
+/* DROPDOWN/SELECT FIELDS */
+
+.admin-layout.light-theme .MuiSelect-root,
+.admin-layout.light-theme .MuiSelect-select,
+.admin-layout.light-theme .recipient-type-select,
+.admin-layout.light-theme .priority-select,
+.admin-layout.light-theme select {
+    background: #ffffff !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.5rem !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    min-height: 56px !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+    transition: all 0.3s ease !important;
+}
+
+.admin-layout.light-theme .MuiSelect-root:hover,
+.admin-layout.light-theme .MuiSelect-select:hover,
+.admin-layout.light-theme select:hover {
+    border-color: #94a3b8 !important;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12) !important;
+    transform: translateY(-1px) !important;
+}
+
+.admin-layout.light-theme .MuiSelect-root:focus,
+.admin-layout.light-theme .MuiSelect-select:focus,
+.admin-layout.light-theme select:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+    outline: none !important;
+}
+
+
+/* Dropdown arrow */
+
+.admin-layout.light-theme .MuiSelect-icon,
+.admin-layout.light-theme .select-arrow {
+    color: #475569 !important;
+    font-size: 1.5rem !important;
+}
+
+
+/* TEXT INPUT FIELDS */
+
+.admin-layout.light-theme .MuiTextField-root,
+.admin-layout.light-theme .MuiOutlinedInput-root,
+.admin-layout.light-theme .notification-title-input,
+.admin-layout.light-theme input[type="text"] {
+    width: 100% !important;
+    background: #ffffff !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+.admin-layout.light-theme .MuiOutlinedInput-input,
+.admin-layout.light-theme .notification-title-input input,
+.admin-layout.light-theme input[type="text"] {
+    padding: 1rem 1.5rem !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.admin-layout.light-theme .MuiTextField-root:hover .MuiOutlinedInput-root,
+.admin-layout.light-theme .MuiOutlinedInput-root:hover,
+.admin-layout.light-theme input[type="text"]:hover {
+    border-color: #94a3b8 !important;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12) !important;
+    transform: translateY(-1px) !important;
+}
+
+.admin-layout.light-theme .MuiTextField-root:focus-within .MuiOutlinedInput-root,
+.admin-layout.light-theme .MuiOutlinedInput-root.Mui-focused,
+.admin-layout.light-theme input[type="text"]:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+}
+
+
+/* Remove default outline */
+
+.admin-layout.light-theme .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+}
+
+
+/* TEXTAREA FIELDS */
+
+.admin-layout.light-theme .MuiTextField-root textarea,
+.admin-layout.light-theme .message-content-textarea,
+.admin-layout.light-theme textarea {
+    width: 100% !important;
+    background: #ffffff !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    min-height: 150px !important;
+    resize: vertical !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Inter', sans-serif !important;
+    line-height: 1.6 !important;
+}
+
+.admin-layout.light-theme textarea:hover {
+    border-color: #94a3b8 !important;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12) !important;
+    transform: translateY(-1px) !important;
+}
+
+.admin-layout.light-theme textarea:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+    outline: none !important;
+}
+
+
+/* SUBMIT BUTTON */
+
+.admin-layout.light-theme .send-notification-btn,
+.admin-layout.light-theme .submit-notification-btn,
+.admin-layout.light-theme .notification-submit,
+.admin-layout.light-theme .MuiButton-contained {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 1rem 2.5rem !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3) !important;
+    margin-top: 1.5rem !important;
+    min-width: 200px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.admin-layout.light-theme .send-notification-btn:hover,
+.admin-layout.light-theme .submit-notification-btn:hover,
+.admin-layout.light-theme .notification-submit:hover,
+.admin-layout.light-theme .MuiButton-contained:hover {
+    background: linear-gradient(135deg, #047857 0%, #065f46 100%) !important;
+    box-shadow: 0 8px 30px rgba(5, 150, 105, 0.4) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.admin-layout.light-theme .send-notification-btn::before,
+.admin-layout.light-theme .submit-notification-btn::before {
+    content: '✈' !important;
+    margin-right: 0.5rem !important;
+    font-size: 1rem !important;
+}
+
+
+/* FORM FIELD SECTIONS */
+
+.admin-layout.light-theme .recipient-section,
+.admin-layout.light-theme .title-section,
+.admin-layout.light-theme .content-section,
+.admin-layout.light-theme .priority-section {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    position: relative !important;
+}
+
+.admin-layout.light-theme .recipient-section::before {
+    content: '👥';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #ffffff;
+    padding: 0 0.5rem;
+    color: #3b82f6;
+    font-size: 1.2rem;
+}
+
+.admin-layout.light-theme .title-section::before {
+    content: '📝';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #ffffff;
+    padding: 0 0.5rem;
+    color: #8b5cf6;
+    font-size: 1.2rem;
+}
+
+.admin-layout.light-theme .content-section::before {
+    content: '💬';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #ffffff;
+    padding: 0 0.5rem;
+    color: #10b981;
+    font-size: 1.2rem;
+}
+
+.admin-layout.light-theme .priority-section::before {
+    content: '⚡';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #ffffff;
+    padding: 0 0.5rem;
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+
+/* DROPDOWN MENU STYLING */
+
+.admin-layout.light-theme .MuiPaper-root.MuiMenu-paper,
+.admin-layout.light-theme .MuiPopover-paper {
+    background: #ffffff !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15) !important;
+    margin-top: 0.5rem !important;
+}
+
+.admin-layout.light-theme .MuiMenuItem-root {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    padding: 1rem 1.5rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.admin-layout.light-theme .MuiMenuItem-root:hover {
+    background: #f1f5f9 !important;
+    color: #3b82f6 !important;
+}
+
+.admin-layout.light-theme .MuiMenuItem-root.Mui-selected {
+    background: #dbeafe !important;
+    color: #1d4ed8 !important;
+    font-weight: 700 !important;
+}
+
+
+/* PLACEHOLDER STYLING */
+
+.admin-layout.light-theme input::placeholder,
+.admin-layout.light-theme textarea::placeholder,
+.admin-layout.light-theme .MuiInputBase-input::placeholder {
+    color: #64748b !important;
+    opacity: 0.8 !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+}
+
+
+/* =========================== OVERRIDE ANY REMAINING STYLES =========================== */
+
+
+/* Override inline styles */
+
+.admin-layout.light-theme [style*="color"],
+.admin-layout.light-theme [style*="color: #cbd5e1"],
+.admin-layout.light-theme [style*="color: #94a3b8"],
+.admin-layout.light-theme [style*="color: rgb(203, 213, 225)"],
+.admin-layout.light-theme [style*="color: rgb(148, 163, 184)"] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* Override utility classes */
+
+.admin-layout.light-theme .text-gray-400,
+.admin-layout.light-theme .text-gray-500,
+.admin-layout.light-theme .text-slate-400,
+.admin-layout.light-theme .text-slate-500 {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+
+/* PRESERVE WHITE TEXT ON COLORED BACKGROUNDS */
+
+.admin-layout.light-theme .nav-item.active,
+.admin-layout.light-theme .nav-item.active *,
+.admin-layout.light-theme .admin-add-btn,
+.admin-layout.light-theme .admin-add-btn *,
+.admin-layout.light-theme .admin-save-btn,
+.admin-layout.light-theme .admin-save-btn *,
+.admin-layout.light-theme .admin-edit-btn,
+.admin-layout.light-theme .admin-edit-btn *,
+.admin-layout.light-theme .admin-delete-btn,
+.admin-layout.light-theme .admin-delete-btn *,
+.admin-layout.light-theme .admin-special-btn,
+.admin-layout.light-theme .admin-special-btn *,
+.admin-layout.light-theme .status-chip,
+.admin-layout.light-theme .status-chip *,
+.admin-layout.light-theme .MuiChip-root,
+.admin-layout.light-theme .MuiChip-root *,
+.admin-layout.light-theme .send-notification-btn,
+.admin-layout.light-theme .send-notification-btn *,
+.admin-layout.light-theme .submit-notification-btn,
+.admin-layout.light-theme .submit-notification-btn * {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+
+/* FINAL INHERITANCE OVERRIDE */
+
+.admin-layout.light-theme * {
+    color: inherit !important;
+    font-weight: inherit !important;
+}
+
+
+/* =========================== ADDITIONAL ENHANCEMENTS =========================== */
+
+
+/* Focus states for better accessibility */
+
+.admin-layout.light-theme *:focus {
+    outline: 2px solid #3b82f6 !important;
+    outline-offset: 2px !important;
+}
+
+
+/* Button focus state */
+
+.admin-layout.light-theme .send-notification-btn:focus,
+.admin-layout.light-theme .submit-notification-btn:focus {
+    outline: 3px solid rgba(59, 130, 246, 0.5) !important;
+}
+
+
+/* Loading state for submit button */
+
+.admin-layout.light-theme .send-notification-btn.loading,
+.admin-layout.light-theme .submit-notification-btn.loading {
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+.admin-layout.light-theme .send-notification-btn.loading::before,
+.admin-layout.light-theme .submit-notification-btn.loading::before {
+    content: '⏳' !important;
+    animation: spin 1s linear infinite !important;
+}
+
+
+/* Success state feedback */
+
+.admin-layout.light-theme .notification-form.success {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1) !important;
+}
+
+
+/* Error state feedback */
+
+.admin-layout.light-theme .notification-form.error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+}
+
+
+/* Required field indicators */
+
+.admin-layout.light-theme .required-field::after {
+    content: ' *' !important;
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+}
+
+
+/* Character count for textarea */
+
+.admin-layout.light-theme .character-count {
+    text-align: right !important;
+    font-size: 0.875rem !important;
+    color: #64748b !important;
+    margin-top: 0.5rem !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================== RESPONSIVE DESIGN =========================== */
 
 @media (max-width: 768px) {
     .admin-page-container {
@@ -689,7 +1540,6 @@
         padding: 1.5rem !important;
     }
 
-    /* FIXED: Mobile dialog sizing */
     .admin-dialog .MuiDialog-paper {
         max-width: 95% !important;
         width: 95% !important;
@@ -697,23 +1547,22 @@
         max-height: 90vh !important;
     }
 
-    .admin-dialog .MuiDialog-container {
-        padding: 1rem !important;
-    }
-
-    .admin-dialog .MuiDialogContent-root {
+    .admin-layout.light-theme .notification-form,
+    .admin-layout.light-theme .create-notification-form {
         padding: 1.5rem !important;
-        max-height: 50vh !important;
+        margin: 1rem !important;
     }
 
-    .admin-dialog .MuiDialogActions-root {
-        padding: 1rem 1.5rem !important;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .admin-dialog-btn {
+    .admin-layout.light-theme .send-notification-btn,
+    .admin-layout.light-theme .submit-notification-btn {
         width: 100% !important;
+        padding: 1.25rem !important;
+        font-size: 1.1rem !important;
+    }
+
+    .admin-layout.light-theme .form-section-header {
+        font-size: 1.25rem !important;
+        text-align: center !important;
     }
 }
 
@@ -733,7 +1582,6 @@
         margin: 0 0.125rem !important;
     }
 
-    /* FIXED: Small mobile dialog sizing */
     .admin-dialog .MuiDialog-paper {
         max-width: 100% !important;
         width: 100% !important;
@@ -741,12 +1589,18 @@
         border-radius: 16px !important;
     }
 
-    .admin-dialog .MuiDialogTitle-root {
-        padding: 1rem 1.5rem 0.5rem !important;
-        font-size: 1.25rem !important;
+    .admin-layout.light-theme .notification-form,
+    .admin-layout.light-theme .create-notification-form {
+        padding: 1rem !important;
+        margin: 0.5rem !important;
+        border-radius: 16px !important;
     }
 
-    .admin-dialog .MuiDialogContent-root {
+    .admin-layout.light-theme .recipient-section,
+    .admin-layout.light-theme .title-section,
+    .admin-layout.light-theme .content-section,
+    .admin-layout.light-theme .priority-section {
         padding: 1rem !important;
+        margin-bottom: 1rem !important;
     }
 }

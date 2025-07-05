@@ -1,22 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
+const { Pool } = require('pg');
+require('dotenv').config();
 
-const authRouter = require('./routes/auth');
-const adminRouter = require('./routes/admin');
-const userRouter = require('./routes/users'); // ✅ Add this line
-
-app.use(cors());
-app.use(express.json());
-
-// ✅ Mount routers
-app.use('/api', authRouter);
-app.use('/api/admin', adminRouter);
-app.use('/api/user', userRouter); // ✅ Mount user routes
-
-app.get('/api/test', (req, res) =>
-  res.json({ success: true, message: 'Server is running!' })
+// Smart configuration: Use environment variable if available, otherwise use local config
+const pool = new Pool(
+  process.env.DATABASE_URL ?
+    {
+      // Production configuration (Neon database)
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    } :
+    {
+      // Local development configuration (your existing setup)
+      user: 'postgres',
+      host: 'localhost',
+      database: 'gcms',
+      password: 'chandan@2710',
+      port: 5432,
+    }
 );
 
-const PORT = 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+pool.connect()
+  .then(() => {
+    console.log("✅ Connected to PostgreSQL DB");
+    console.log("🔗 Using:", process.env.DATABASE_URL ? "Production Database (Neon)" : "Local Database");
+  })
+  .catch((err) => {
+    console.error("❌ DB connection error:", err);
+    process.exit(1);
+  });
+
+module.exports = pool;
